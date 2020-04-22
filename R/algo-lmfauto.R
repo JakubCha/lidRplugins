@@ -64,6 +64,7 @@ lmfauto = function(plot = FALSE, hmin = 2)
 
     ws <- lmfauto_ws(las@data$Z, ntop5)
     lm <- lidR:::C_lmf(las, ws, hmin, TRUE, lidR:::getThread())
+    print(ws)
     return(lm)
   }
 
@@ -101,5 +102,6 @@ lmfauto_ws = function(x, n, d = 10)
   ws <- slope*x + intercept
   ws[x < llim] <- a[x < llim]
   ws[x < llim] <- b[x < llim]
+  print(ws)
   return(ws)
 }
